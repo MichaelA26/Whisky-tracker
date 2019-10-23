@@ -1,6 +1,8 @@
 package com.codeclan.example.WhiskyTracker;
 
+import com.codeclan.example.WhiskyTracker.models.Distillery;
 import com.codeclan.example.WhiskyTracker.models.Whisky;
+import com.codeclan.example.WhiskyTracker.repositories.DistilleryRepository.DistilleryRepository;
 import com.codeclan.example.WhiskyTracker.repositories.WhiskyRepository.WhiskyRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +21,9 @@ public class WhiskyTrackerApplicationTests {
 	@Autowired
 	WhiskyRepository whiskyRepository;
 
+	@Autowired
+	DistilleryRepository distilleryRepository;
+
 	@Test
 	public void contextLoads() {
 	}
@@ -27,6 +32,12 @@ public class WhiskyTrackerApplicationTests {
 	public void canReturnWhiskyByYear(){
 		List<Whisky> foundWhiskies = whiskyRepository.findWhiskyByYear(2018);
 		assertEquals(2018, foundWhiskies.get(0).getYear());
+	}
+
+	@Test
+	public void canReturnDistilleryByRegion(){
+		List<Distillery> foundDistilleries = distilleryRepository.findDistilleryByRegion("Speyside");
+		assertEquals("Speyside", foundDistilleries.get(0).getRegion());
 	}
 
 }
