@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface DistilleryRepository extends JpaRepository<Distillery, Long>, DistilleryRepositoryCustom {
     List<Distillery> findDistilleryByRegion(String region);
+    Distillery findDistilleryByName(String name);
 }
